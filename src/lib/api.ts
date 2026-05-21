@@ -35,7 +35,7 @@ export const api = {
   pushPlaylist: (blendId: string) =>
     request<{ playlistUrl: string }>(`/playlist/${blendId}/push`, { method: 'POST' }),
 
-  getAuthUrl: (platform: 'spotify' | 'ytmusic', blendId?: string) => {
+  getAuthUrl: (platform: 'lastfm' | 'ytmusic', blendId?: string) => {
     const params = blendId ? `?blendId=${blendId}` : '';
     return `${API_BASE}/auth/${platform}${params}`;
   },

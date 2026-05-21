@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Blendify — Cross-Platform Music Blend",
-  description: "Blend your music taste with friends across Spotify and YouTube Music",
+  description: "Blend your music taste with friends across Last.fm and YouTube Music",
 };
 
 export default function RootLayout({

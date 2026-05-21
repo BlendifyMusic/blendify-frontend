@@ -49,7 +49,7 @@ export default function Home() {
           variants={fadeInUp}
           className="text-lg sm:text-xl text-white/60 max-w-md mb-10 leading-relaxed"
         >
-          Connect with friends on Spotify or YouTube Music. Discover what you share, what makes you unique, and get a playlist you&apos;ll both love.
+          Connect with friends on Last.fm or YouTube Music. Discover what you share, what makes you unique, and get a playlist you&apos;ll both love.
         </motion.p>
 
         {/* CTA */}
