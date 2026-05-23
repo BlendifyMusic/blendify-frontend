@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer, scaleIn } from '@/lib/utils/animations';
 import { PlatformPicker } from '@/components/auth/PlatformPicker';
 import { useState } from 'react';
+import Link from 'next/link';
+import { Logo } from '@/components/Logo';
 
 export default function Home() {
   const [showPicker, setShowPicker] = useState(false);
@@ -25,13 +27,7 @@ export default function Home() {
       >
         {/* Logo */}
         <motion.div variants={scaleIn} className="mb-8">
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 flex items-center justify-center animate-gradient">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 18V5l12-2v13" />
-              <circle cx="6" cy="18" r="3" />
-              <circle cx="18" cy="16" r="3" />
-            </svg>
-          </div>
+          <Logo size={80} className="rounded-2xl" />
         </motion.div>
 
         {/* Heading */}
@@ -88,10 +84,15 @@ export default function Home() {
         </motion.div>
       </motion.div>
 
-      {/* Footer watermark */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/20 text-sm tracking-widest uppercase">
-        Blendify
-      </div>
+      {/* Footer */}
+      <footer className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+        <div className="flex gap-4 text-sm text-white/30">
+          <Link href="/privacy" className="hover:text-white/60 transition-colors">Privacy Policy</Link>
+          <span>·</span>
+          <Link href="/terms" className="hover:text-white/60 transition-colors">Terms of Service</Link>
+        </div>
+        <span className="text-white/20 text-xs tracking-widest uppercase">Blendify</span>
+      </footer>
     </main>
   );
 }
