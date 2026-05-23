@@ -21,23 +21,31 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
   }, [id]);
 
   useEffect(() => {
-    if (!user || !blend || blend.status !== 'waiting') return;
+    if (!user || !blend || blend.status !== 'waiting' || joining) return;
+    if (blend.creatorUid === user.uid) return;
 
+    setJoining(true);
     (async () => {
-      setJoining(true);
       try {
         await api.joinBlend(id);
         router.push(`/blend/${id}/reveal`);
       } catch {
+        setJoining(false);
         setError('Failed to create blend. Please try again.');
       }
     })();
-  }, [user, blend, id, router]);
+  }, [user, blend, id, router, joining]);
 
   if (error) {
     return (
-      <main className="min-h-screen flex items-center justify-center px-6">
+      <main className="min-h-screen flex flex-col items-center justify-center px-6 gap-4">
         <p className="text-white/60 text-lg">{error}</p>
+        <button
+          onClick={() => router.push('/')}
+          className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 transition-colors font-medium text-sm"
+        >
+          Go Home
+        </button>
       </main>
     );
   }
@@ -50,9 +58,36 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
     );
   }
 
-  if (blend.status === 'ready') {
+  if (blend.status === 'ready' && user) {
     router.push(`/blend/${id}/reveal`);
     return null;
+  }
+
+  if (blend.status === 'ready' && !user && !authLoading) {
+    return (
+      <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/3 -left-20 w-72 h-72 rounded-full bg-purple-600/20 blur-[100px] animate-pulse-glow" />
+          <div className="absolute bottom-1/3 -right-20 w-72 h-72 rounded-full bg-pink-600/20 blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+        </div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col items-center text-center max-w-lg"
+        >
+          <motion.h1 variants={fadeInUp} className="text-3xl font-bold mb-3">
+            This blend is ready!
+          </motion.h1>
+          <motion.p variants={fadeInUp} className="text-white/50 text-lg mb-10">
+            Sign in to view the results
+          </motion.p>
+          <motion.div variants={fadeInUp}>
+            <PlatformPicker blendId={id} />
+          </motion.div>
+        </motion.div>
+      </main>
+    );
   }
 
   if (joining) {
@@ -104,6 +139,10 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
           <motion.div variants={fadeInUp}>
             <PlatformPicker blendId={id} />
           </motion.div>
+        )}
+
+        {authLoading && (
+          <div className="w-8 h-8 rounded-full border-2 border-purple-500/30 border-t-purple-500 animate-spin" />
         )}
       </motion.div>
     </main>

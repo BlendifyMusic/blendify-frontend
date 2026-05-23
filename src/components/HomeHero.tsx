@@ -1,12 +1,33 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer, scaleIn } from '@/lib/utils/animations';
+import { staggerContainer, scaleIn } from '@/lib/utils/animations';
 import { PlatformPicker } from '@/components/auth/PlatformPicker';
 import { useState } from 'react';
+import { useAuth } from '@/lib/hooks/useAuth';
+import { api } from '@/lib/api';
+import { useRouter } from 'next/navigation';
 
 export function HomeHero() {
   const [showPicker, setShowPicker] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const { user, loading } = useAuth();
+  const router = useRouter();
+
+  const handleCreateBlend = async () => {
+    if (user) {
+      setCreating(true);
+      try {
+        const { blendId } = await api.createBlend();
+        router.push(`/blend/new?id=${blendId}`);
+      } catch {
+        setShowPicker(true);
+        setCreating(false);
+      }
+    } else {
+      setShowPicker(true);
+    }
+  };
 
   return (
     <motion.div
@@ -18,19 +39,30 @@ export function HomeHero() {
       <motion.div variants={scaleIn}>
         {!showPicker ? (
           <button
-            onClick={() => setShowPicker(true)}
-            className="group relative px-8 py-4 rounded-full font-semibold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95"
+            onClick={handleCreateBlend}
+            disabled={loading || creating}
+            className="group relative px-8 py-4 rounded-full font-semibold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 disabled:opacity-50"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 animate-gradient" />
             <div className="absolute inset-[2px] bg-[#0a0a0a] rounded-full transition-opacity group-hover:opacity-0" />
             <span className="relative text-gradient group-hover:text-white transition-colors">
-              Create Your Blend
+              {creating ? 'Creating...' : 'Create Your Blend'}
             </span>
           </button>
         ) : (
           <PlatformPicker />
         )}
       </motion.div>
+
+      {user && !showPicker && !creating && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-white/30 text-sm mt-3"
+        >
+          Signed in as {user.displayName || 'User'}
+        </motion.p>
+      )}
     </motion.div>
   );
 }

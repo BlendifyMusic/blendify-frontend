@@ -35,8 +35,33 @@ export const api = {
   pushPlaylist: (blendId: string) =>
     request<{ playlistUrl: string }>(`/playlist/${blendId}/push`, { method: 'POST' }),
 
+  getUserMusicData: () =>
+    request<{
+      tracks: { title: string; artist: string; albumArt: string; platform: string }[];
+      artists: { name: string; imageUrl: string; genres: string[]; platform: string }[];
+      fetchedAt: string;
+    }>('/blend/user/music-data'),
+
+  getUserProfile: () =>
+    request<{ displayName: string; avatarUrl: string; platform: string }>('/blend/user/profile'),
+
   getAuthUrl: (platform: 'lastfm' | 'ytmusic', blendId?: string) => {
     const params = blendId ? `?blendId=${blendId}` : '';
     return `${API_BASE}/auth/${platform}${params}`;
+  },
+
+  streamBlendEvents: (
+    blendId: string,
+    onUpdate: (data: { status: string; joinerName: string | null; joinerAvatar: string | null }) => void,
+  ): (() => void) => {
+    const es = new EventSource(`${API_BASE}/blend/${blendId}/events`);
+    es.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      onUpdate(data);
+    };
+    es.onerror = () => {
+      es.close();
+    };
+    return () => es.close();
   },
 };
