@@ -1,76 +1,38 @@
-'use client';
-
-import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer, scaleIn } from '@/lib/utils/animations';
-import { PlatformPicker } from '@/components/auth/PlatformPicker';
-import { useState } from 'react';
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
+import { HomeHero } from '@/components/HomeHero';
 
 export default function Home() {
-  const [showPicker, setShowPicker] = useState(false);
-
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
-      {/* Animated background orbs */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-purple-600/20 blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-pink-600/20 blur-[120px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-orange-500/10 blur-[150px] animate-pulse-glow" style={{ animationDelay: '3s' }} />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-pink-600/20 blur-[120px] animate-pulse-glow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-orange-500/10 blur-[150px] animate-pulse-glow" />
       </div>
 
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="flex flex-col items-center text-center max-w-2xl"
-      >
-        {/* Logo */}
-        <motion.div variants={scaleIn} className="mb-8">
+      <div className="flex flex-col items-center text-center max-w-2xl">
+        <div className="mb-8">
           <Logo size={80} className="rounded-2xl" />
-        </motion.div>
+        </div>
 
-        {/* Heading */}
-        <motion.h1
-          variants={fadeInUp}
-          className="text-5xl sm:text-7xl font-bold tracking-tight leading-[1.1] mb-6"
-        >
+        <h1 className="text-5xl sm:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
           Blend your music
           <br />
           <span className="text-gradient">across platforms</span>
-        </motion.h1>
+        </h1>
 
-        {/* Subheading */}
-        <motion.p
-          variants={fadeInUp}
-          className="text-lg sm:text-xl text-white/60 max-w-md mb-10 leading-relaxed"
-        >
-          Connect with friends on Last.fm or YouTube Music. Discover what you share, what makes you unique, and get a playlist you&apos;ll both love.
-        </motion.p>
+        <p className="text-lg sm:text-xl text-white/60 max-w-md mb-4 leading-relaxed">
+          Blendify is a free music comparison app that lets you and your friends connect your Last.fm or YouTube Music accounts to discover your shared music taste.
+        </p>
 
-        {/* CTA */}
-        <motion.div variants={fadeInUp}>
-          {!showPicker ? (
-            <button
-              onClick={() => setShowPicker(true)}
-              className="group relative px-8 py-4 rounded-full font-semibold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 animate-gradient" />
-              <div className="absolute inset-[2px] bg-[#0a0a0a] rounded-full transition-opacity group-hover:opacity-0" />
-              <span className="relative text-gradient group-hover:text-white transition-colors">
-                Create Your Blend
-              </span>
-            </button>
-          ) : (
-            <PlatformPicker />
-          )}
-        </motion.div>
+        <p className="text-base text-white/50 max-w-md mb-10 leading-relaxed">
+          See which artists you both love, get a compatibility score, and generate a shared playlist — all across different music platforms.
+        </p>
 
-        {/* Feature pills */}
-        <motion.div
-          variants={fadeInUp}
-          className="flex flex-wrap justify-center gap-3 mt-16"
-        >
+        <HomeHero />
+
+        <div className="flex flex-wrap justify-center gap-3 mt-16">
           {['Cross-Platform', 'Compatibility Score', 'Shared Playlist', 'Shareable Stories'].map(
             (feature) => (
               <span
@@ -81,10 +43,22 @@ export default function Home() {
               </span>
             ),
           )}
-        </motion.div>
-      </motion.div>
+        </div>
 
-      {/* Footer */}
+        <section className="mt-20 text-left max-w-lg space-y-6 text-white/50 text-sm leading-relaxed">
+          <h2 className="text-lg font-semibold text-white/80">How Blendify Works</h2>
+          <ol className="list-decimal list-inside space-y-2">
+            <li>Connect your Last.fm or YouTube Music account</li>
+            <li>Share your unique blend link with a friend</li>
+            <li>Your friend connects their music account</li>
+            <li>Blendify compares your listening histories and reveals your shared artists, a compatibility score, and a blended playlist</li>
+          </ol>
+          <p>
+            Blendify only reads your public listening data. We never post on your behalf, modify your playlists, or share your data with third parties.
+          </p>
+        </section>
+      </div>
+
       <footer className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
         <div className="flex gap-4 text-sm text-white/30">
           <Link href="/privacy" className="hover:text-white/60 transition-colors">Privacy Policy</Link>
