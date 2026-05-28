@@ -1,4 +1,5 @@
 {
+  "account_id": "6714689d353163dc92fd37f59b8229af",
   "name": "blendify-frontend",
   "main": ".open-next/worker.js",
   "compatibility_flags": ["nodejs_compat"],
