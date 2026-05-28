@@ -42,7 +42,7 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
         <p className="text-white/60 text-lg">{error}</p>
         <button
           onClick={() => router.push('/')}
-          className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 transition-colors font-medium text-sm"
+          className="px-6 py-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] transition-colors font-medium text-sm"
         >
           Go Home
         </button>
@@ -53,7 +53,7 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
   if (!blend) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full border-4 border-purple-500/30 border-t-purple-500 animate-spin" />
+        <div className="w-12 h-12 rounded-full border-4 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
       </main>
     );
   }
@@ -67,8 +67,8 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
     return (
       <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/3 -left-20 w-72 h-72 rounded-full bg-purple-600/20 blur-[100px] animate-pulse-glow" />
-          <div className="absolute bottom-1/3 -right-20 w-72 h-72 rounded-full bg-pink-600/20 blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+          <div className="absolute top-1/3 -left-20 w-72 h-72 rounded-full bg-[#1DB954]/10 blur-[100px] animate-pulse-glow" />
+          <div className="absolute bottom-1/3 -right-20 w-72 h-72 rounded-full bg-emerald-500/10 blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
         </div>
         <motion.div
           variants={staggerContainer}
@@ -93,7 +93,7 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
   if (joining) {
     return (
       <main className="min-h-screen flex flex-col items-center justify-center gap-6">
-        <div className="w-16 h-16 rounded-full border-4 border-pink-500/30 border-t-pink-500 animate-spin" />
+        <div className="w-16 h-16 rounded-full border-4 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
         <p className="text-white/60 text-lg">Creating your blend...</p>
       </main>
     );
@@ -102,8 +102,8 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 -left-20 w-72 h-72 rounded-full bg-purple-600/20 blur-[100px] animate-pulse-glow" />
-        <div className="absolute bottom-1/3 -right-20 w-72 h-72 rounded-full bg-pink-600/20 blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-1/3 -left-20 w-72 h-72 rounded-full bg-[#1DB954]/10 blur-[100px] animate-pulse-glow" />
+        <div className="absolute bottom-1/3 -right-20 w-72 h-72 rounded-full bg-emerald-500/10 blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
       </div>
 
       <motion.div
@@ -117,10 +117,10 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
             <img
               src={blend.creatorAvatar}
               alt={blend.creatorName}
-              className="w-24 h-24 rounded-full border-4 border-purple-500/50"
+              className="w-24 h-24 rounded-full border-4 border-[#1DB954]/40"
             />
           ) : (
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-3xl font-bold">
+            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#1DB954] to-emerald-600 flex items-center justify-center text-3xl font-bold">
               {blend.creatorName?.charAt(0)}
             </div>
           )}
@@ -142,7 +142,7 @@ export default function BlendJoin({ params }: { params: Promise<{ id: string }> 
         )}
 
         {authLoading && (
-          <div className="w-8 h-8 rounded-full border-2 border-purple-500/30 border-t-purple-500 animate-spin" />
+          <div className="w-8 h-8 rounded-full border-2 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
         )}
       </motion.div>
     </main>

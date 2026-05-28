@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-xl font-semibold text-white mb-3">7. Contact</h2>
           <p>
             For questions about this privacy policy, contact us at{' '}
-            <a href="mailto:privacy@useblendify.com" className="text-purple-400 hover:underline">
+            <a href="mailto:privacy@useblendify.com" className="text-[#1DB954] hover:underline">
               privacy@useblendify.com
             </a>
           </p>

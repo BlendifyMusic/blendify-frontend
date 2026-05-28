@@ -26,7 +26,7 @@ export default function RevealPage({ params }: { params: Promise<{ id: string }>
   if (authLoading || !blend?.result) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <div className="w-16 h-16 rounded-full border-4 border-purple-500/30 border-t-purple-500 animate-spin" />
+        <div className="w-16 h-16 rounded-full border-4 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
       </main>
     );
   }

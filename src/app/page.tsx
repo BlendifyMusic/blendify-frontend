@@ -1,144 +1,183 @@
 import Link from 'next/link';
 import { Logo } from '@/components/Logo';
 import { HomeHero } from '@/components/HomeHero';
+import { SoundWave } from '@/components/SoundWave';
 
 export default function Home() {
   return (
     <main className="relative min-h-screen flex flex-col overflow-hidden">
-      {/* Background glows */}
+      {/* Background radial glows */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 -left-32 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-purple-600/20 blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 -right-32 w-64 sm:w-96 h-64 sm:h-96 rounded-full bg-pink-600/20 blur-[120px] animate-pulse-glow" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] rounded-full bg-orange-500/10 blur-[150px] animate-pulse-glow" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 80% 60% at 20% -10%, #0d2e1a 0%, #0a0a0a 55%), radial-gradient(ellipse 60% 50% at 85% 100%, #0d2416 0%, transparent 60%)',
+          }}
+        />
       </div>
 
       {/* Navigation */}
-      <nav className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between max-w-6xl mx-auto">
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Logo size={32} className="rounded-xl sm:hidden" />
-          <Logo size={36} className="rounded-xl hidden sm:block" />
-          <span className="text-base sm:text-lg font-semibold text-white/90">Blendify</span>
+      <nav className="w-full px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between max-w-5xl mx-auto">
+        <div className="flex items-center gap-2.5">
+          <Logo size={38} className="rounded-xl" />
+          <span className="text-[17px] font-bold text-white tracking-tight">
+            blend<span className="text-[#1DB954]">ify</span>
+          </span>
         </div>
-        <div className="hidden sm:flex items-center gap-6 text-sm text-white/50">
-          <a href="#how-it-works" className="hover:text-white/80 transition-colors">How It Works</a>
-          <a href="#features" className="hover:text-white/80 transition-colors">Features</a>
-          <a href="#data-usage" className="hover:text-white/80 transition-colors">Data &amp; Privacy</a>
+        <div className="hidden sm:flex items-center gap-8 text-[13px] text-white/35 font-medium">
+          <a href="#how-it-works" className="hover:text-white/70 transition-colors">How It Works</a>
+          <a href="#features" className="hover:text-white/70 transition-colors">Features</a>
+          <a href="#data-usage" className="hover:text-white/70 transition-colors">Privacy</a>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-10 sm:py-16">
-        <div className="flex flex-col items-center max-w-2xl">
-          <div className="mb-6 sm:mb-8">
-            <Logo size={64} className="rounded-2xl sm:hidden" />
-            <Logo size={80} className="rounded-2xl hidden sm:block" />
+      <section className="flex-1 flex flex-col items-center justify-center text-center px-5 sm:px-8 pt-8 sm:pt-16 pb-10 sm:pb-16">
+        <div className="flex flex-col items-center max-w-[600px]">
+          {/* Badge */}
+          <div className="mb-6 sm:mb-8 px-3.5 py-1.5 rounded-full border border-[#1DB954]/25 bg-[#1DB954]/10 text-[#1DB954] text-[11px] font-medium tracking-[1.5px] uppercase">
+            Cross-platform music blending
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-4 sm:mb-6">
-            Blend your music
+          <h1 className="text-[clamp(32px,6vw,54px)] font-extrabold tracking-tight leading-[1.05] mb-4 sm:mb-5">
+            Your taste.
             <br />
-            <span className="text-gradient">across platforms</span>
+            Their taste.
+            <br />
+            <span className="text-gradient">One playlist.</span>
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-md mb-3 sm:mb-4 leading-relaxed">
-            Blendify is a free music comparison app that lets you and your friends connect your Last.fm or YouTube Music accounts to discover your shared music taste.
-          </p>
-
-          <p className="text-sm sm:text-base text-white/50 max-w-md mb-8 sm:mb-10 leading-relaxed">
-            See which artists you both love, get a compatibility score, and generate a shared playlist — all across different music platforms.
+          <p className="text-[15px] font-light text-white/40 max-w-[380px] mb-8 sm:mb-10 leading-[1.7]">
+            Merge music libraries across platforms. Share a link, discover your overlap, vibe together.
           </p>
 
           <HomeHero />
 
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-10 sm:mt-16">
-            {['Cross-Platform', 'Compatibility Score', 'Shared Playlist', 'Shareable Stories'].map(
-              (feature) => (
-                <span
-                  key={feature}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 text-xs sm:text-sm text-white/40 backdrop-blur-sm"
+          {/* Platform chips */}
+          <div className="flex flex-col items-center gap-2 mt-8 sm:mt-10">
+            <span className="text-[11px] text-white/20 tracking-[0.5px] uppercase font-medium">Works with</span>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                { name: 'YouTube Music', color: '#FC3C44' },
+                { name: 'Last.fm', color: '#d4483b' },
+                { name: 'Spotify', color: '', soon: true },
+              ].map((p) => (
+                <div
+                  key={p.name}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border text-[12px] ${
+                    p.soon
+                      ? 'border-white/5 bg-white/[0.02] text-white/20'
+                      : 'border-white/7 bg-white/[0.04] text-white/45'
+                  }`}
                 >
-                  {feature}
-                </span>
-              ),
-            )}
+                  <span
+                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ background: p.soon ? 'rgba(255,255,255,0.2)' : p.color }}
+                  />
+                  {p.name}
+                  {p.soon && <span className="text-white/15 ml-0.5">— soon</span>}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="w-full max-w-[500px] mx-auto border-t border-white/[0.06]" />
+
       {/* How It Works */}
-      <section id="how-it-works" className="px-4 sm:px-6 py-12 sm:py-20 max-w-4xl mx-auto w-full">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">How Blendify Works</h2>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+      <section id="how-it-works" className="px-5 sm:px-8 py-12 sm:py-20 max-w-[500px] mx-auto w-full">
+        <p className="text-[11px] font-medium tracking-[2px] uppercase text-white/20 text-center mb-8 sm:mb-10">How it works</p>
+
+        <div className="flex flex-col">
           {[
-            { step: '1', title: 'Connect', desc: 'Sign in with your Last.fm or YouTube Music account.' },
-            { step: '2', title: 'Share', desc: 'Get a unique blend link and send it to a friend.' },
-            { step: '3', title: 'Match', desc: 'Your friend connects their music account via the link.' },
-            { step: '4', title: 'Discover', desc: 'See your shared artists, compatibility score, and a blended playlist.' },
-          ].map((item) => (
-            <div key={item.step} className="text-center">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-lg font-bold mx-auto mb-4">
-                {item.step}
+            { title: 'Connect your music', desc: 'Log in with YouTube Music or Last.fm to bring your library in.' },
+            { title: 'Share a blend link', desc: 'Generate a unique link and send it to a friend — no app required on their end.' },
+            { title: 'Friend joins', desc: 'They connect their platform and the blend engine analyses your combined taste.' },
+            { title: 'Your playlist drops', desc: 'A shared playlist + personalised taste insights — save it or share it anywhere.' },
+          ].map((step, i, arr) => (
+            <div key={step.title} className="flex gap-5">
+              {/* Timeline */}
+              <div className="flex flex-col items-center flex-shrink-0 pt-0.5">
+                <div className="w-[30px] h-[30px] rounded-full border border-[#1DB954]/30 bg-[#1DB954]/[0.08] flex items-center justify-center text-[12px] font-bold text-[#1DB954]">
+                  {i + 1}
+                </div>
+                {i < arr.length - 1 && (
+                  <div className="w-px flex-1 min-h-[36px] my-1.5 bg-gradient-to-b from-[#1DB954]/20 to-[#1DB954]/[0.04]" />
+                )}
               </div>
-              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+              {/* Content */}
+              <div className="pb-7">
+                <p className="text-[14px] font-bold text-white mt-1 mb-1.5">{step.title}</p>
+                <p className="text-[13px] text-white/30 leading-[1.65]">{step.desc}</p>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Sound wave */}
+        <div className="flex justify-center mt-4">
+          <SoundWave />
         </div>
       </section>
 
       {/* Features */}
-      <section id="features" className="px-4 sm:px-6 py-12 sm:py-20 max-w-4xl mx-auto w-full">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4">Features</h2>
-        <p className="text-white/50 text-center text-sm sm:text-base mb-8 sm:mb-12 max-w-lg mx-auto">
+      <section id="features" className="px-5 sm:px-8 py-12 sm:py-20 max-w-3xl mx-auto w-full">
+        <p className="text-[11px] font-medium tracking-[2px] uppercase text-white/20 text-center mb-3">Features</p>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-3">Built for music lovers</h2>
+        <p className="text-white/35 text-center text-sm mb-10 sm:mb-14 max-w-md mx-auto leading-relaxed">
           Blendify brings people together through music — no matter which platform they use.
         </p>
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid sm:grid-cols-2 gap-4">
           {[
             { title: 'Cross-Platform Blending', desc: 'Compare music taste between Last.fm and YouTube Music users. You don\'t need to be on the same platform.' },
             { title: 'Compatibility Score', desc: 'Get a percentage-based score showing how similar your music taste is with your friend.' },
             { title: 'Shared Artist Discovery', desc: 'See exactly which artists you both listen to, ranked by how much you both love them.' },
             { title: 'Blended Playlist', desc: 'Automatically generate a playlist of songs you both enjoy, ready to listen together.' },
           ].map((item) => (
-            <div key={item.title} className="rounded-2xl border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
-              <h3 className="text-base sm:text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-white/50 text-sm leading-relaxed">{item.desc}</p>
+            <div key={item.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 sm:p-6 hover:border-[#1DB954]/20 hover:bg-[#1DB954]/[0.03] transition-all duration-300">
+              <h3 className="text-[15px] font-semibold mb-2 text-white/90">{item.title}</h3>
+              <p className="text-white/35 text-[13px] leading-[1.7]">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Data Usage & Privacy */}
-      <section id="data-usage" className="px-4 sm:px-6 py-12 sm:py-20 max-w-4xl mx-auto w-full">
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-3 sm:mb-4">Your Data &amp; Privacy</h2>
-        <p className="text-white/50 text-center text-sm sm:text-base mb-8 sm:mb-12 max-w-lg mx-auto">
+      <section id="data-usage" className="px-5 sm:px-8 py-12 sm:py-20 max-w-3xl mx-auto w-full">
+        <p className="text-[11px] font-medium tracking-[2px] uppercase text-white/20 text-center mb-3">Privacy</p>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-3">Your Data &amp; Privacy</h2>
+        <p className="text-white/35 text-center text-sm mb-10 sm:mb-14 max-w-md mx-auto leading-relaxed">
           Blendify is built with your privacy in mind. Here&apos;s exactly what we access and why.
         </p>
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-          <div className="rounded-2xl border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
-            <h3 className="text-base sm:text-lg font-semibold mb-3">What We Access</h3>
-            <ul className="text-white/50 text-sm space-y-2 leading-relaxed">
-              <li>• Your public profile (name and email) for authentication</li>
-              <li>• Your YouTube Music library and listening history to compare music taste</li>
-              <li>• Your Last.fm listening data (public scrobbles) if you choose Last.fm</li>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 sm:p-6">
+            <h3 className="text-[15px] font-semibold mb-3 text-white/90">What We Access</h3>
+            <ul className="text-white/35 text-[13px] space-y-2.5 leading-[1.65]">
+              <li className="flex gap-2"><span className="text-[#1DB954]/60 mt-0.5">-</span>Your public profile (name and email) for authentication</li>
+              <li className="flex gap-2"><span className="text-[#1DB954]/60 mt-0.5">-</span>Your YouTube Music library and listening history to compare music taste</li>
+              <li className="flex gap-2"><span className="text-[#1DB954]/60 mt-0.5">-</span>Your Last.fm listening data (public scrobbles) if you choose Last.fm</li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-white/10 p-4 sm:p-6 backdrop-blur-sm">
-            <h3 className="text-base sm:text-lg font-semibold mb-3">What We Never Do</h3>
-            <ul className="text-white/50 text-sm space-y-2 leading-relaxed">
-              <li>• We never post, upload, or modify anything on your accounts</li>
-              <li>• We never sell or share your data with third parties</li>
-              <li>• We never store your passwords — authentication is handled by Google and Last.fm</li>
+          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 sm:p-6">
+            <h3 className="text-[15px] font-semibold mb-3 text-white/90">What We Never Do</h3>
+            <ul className="text-white/35 text-[13px] space-y-2.5 leading-[1.65]">
+              <li className="flex gap-2"><span className="text-red-400/60 mt-0.5">-</span>We never post, upload, or modify anything on your accounts</li>
+              <li className="flex gap-2"><span className="text-red-400/60 mt-0.5">-</span>We never sell or share your data with third parties</li>
+              <li className="flex gap-2"><span className="text-red-400/60 mt-0.5">-</span>We never store your passwords — authentication is handled by Google and Last.fm</li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-white/10 p-4 sm:p-6 backdrop-blur-sm sm:col-span-2">
-            <h3 className="text-base sm:text-lg font-semibold mb-3">Data Retention &amp; Deletion</h3>
-            <p className="text-white/50 text-sm leading-relaxed">
+          <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 sm:p-6 sm:col-span-2">
+            <h3 className="text-[15px] font-semibold mb-3 text-white/90">Data Retention &amp; Deletion</h3>
+            <p className="text-white/35 text-[13px] leading-[1.7]">
               Blend session data is stored only for the duration of your blend. You can revoke Blendify&apos;s access
               at any time through your{' '}
-              <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline">
+              <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-[#1DB954]/70 hover:text-[#1DB954] hover:underline transition-colors">
                 Google Account settings
               </a>. To request full deletion of your data, contact us at{' '}
-              <a href="mailto:privacy@useblendify.com" className="text-purple-400 hover:underline">
+              <a href="mailto:privacy@useblendify.com" className="text-[#1DB954]/70 hover:text-[#1DB954] hover:underline transition-colors">
                 privacy@useblendify.com
               </a>.
             </p>
@@ -147,16 +186,16 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="px-4 sm:px-6 py-8 sm:py-10 border-t border-white/10">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-          <div className="flex items-center gap-3">
-            <Logo size={24} className="rounded-lg" />
-            <span className="text-sm text-white/40">© {new Date().getFullYear()} Blendify. All rights reserved.</span>
+      <footer className="px-5 sm:px-8 py-8 sm:py-10 border-t border-white/[0.06]">
+        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <Logo size={22} className="rounded-lg" />
+            <span className="text-[12px] text-white/25">&copy; {new Date().getFullYear()} Blendify</span>
           </div>
-          <div className="flex gap-6 text-sm text-white/40">
-            <Link href="/privacy" className="hover:text-white/60 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white/60 transition-colors">Terms of Service</Link>
-            <a href="mailto:privacy@useblendify.com" className="hover:text-white/60 transition-colors">Contact</a>
+          <div className="flex gap-6 text-[12px] text-white/25">
+            <Link href="/privacy" className="hover:text-white/50 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white/50 transition-colors">Terms of Service</Link>
+            <a href="mailto:privacy@useblendify.com" className="hover:text-white/50 transition-colors">Contact</a>
           </div>
         </div>
       </footer>

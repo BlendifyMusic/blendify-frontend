@@ -46,14 +46,14 @@ export function RevealExperience({
       <div className="absolute inset-0 -z-10 transition-colors duration-1000">
         {current === 0 && (
           <>
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-950 via-[#0a0a0a] to-pink-950" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-purple-600/20 blur-[150px] animate-pulse-glow" />
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-950 via-[#0a0a0a] to-green-950" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#1DB954]/15 blur-[150px] animate-pulse-glow" />
           </>
         )}
         {current === 1 && (
           <>
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-[#0a0a0a] to-purple-950" />
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-indigo-500/15 blur-[120px] animate-pulse-glow" />
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-950 via-[#0a0a0a] to-emerald-950" />
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-teal-500/15 blur-[120px] animate-pulse-glow" />
           </>
         )}
         {current === 2 && (
@@ -64,14 +64,14 @@ export function RevealExperience({
         )}
         {current === 3 && (
           <>
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-950 via-[#0a0a0a] to-rose-950" />
-            <div className="absolute top-1/3 left-1/3 w-96 h-96 rounded-full bg-orange-500/15 blur-[120px] animate-pulse-glow" />
+            <div className="absolute inset-0 bg-gradient-to-br from-green-950 via-[#0a0a0a] to-emerald-950" />
+            <div className="absolute top-1/3 left-1/3 w-96 h-96 rounded-full bg-green-500/15 blur-[120px] animate-pulse-glow" />
           </>
         )}
         {current === 4 && (
           <>
-            <div className="absolute inset-0 bg-gradient-to-br from-pink-950 via-[#0a0a0a] to-violet-950" />
-            <div className="absolute bottom-1/3 left-1/2 w-96 h-96 rounded-full bg-pink-500/15 blur-[120px] animate-pulse-glow" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0d2e1a] via-[#0a0a0a] to-emerald-950" />
+            <div className="absolute bottom-1/3 left-1/2 w-96 h-96 rounded-full bg-[#1DB954]/15 blur-[120px] animate-pulse-glow" />
           </>
         )}
       </div>
@@ -87,9 +87,9 @@ export function RevealExperience({
             }}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               i === current
-                ? 'w-8 bg-white'
+                ? 'w-8 bg-[#1DB954]'
                 : i < current
-                  ? 'w-4 bg-white/50'
+                  ? 'w-4 bg-[#1DB954]/50'
                   : 'w-4 bg-white/20'
             }`}
           />

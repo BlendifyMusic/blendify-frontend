@@ -43,9 +43,9 @@ export function CompatibilityScore({
       <motion.div variants={fadeInUp} className="flex items-center gap-4 mb-10">
         <div className="flex flex-col items-center gap-2">
           {creatorAvatar ? (
-            <img src={creatorAvatar} alt={creatorName} className="w-16 h-16 rounded-full border-2 border-purple-500/50" />
+            <img src={creatorAvatar} alt={creatorName} className="w-16 h-16 rounded-full border-2 border-[#1DB954]/50" />
           ) : (
-            <div className="w-16 h-16 rounded-full bg-purple-500/30 flex items-center justify-center font-bold text-xl">
+            <div className="w-16 h-16 rounded-full bg-[#1DB954]/30 flex items-center justify-center font-bold text-xl">
               {creatorName?.charAt(0)}
             </div>
           )}
@@ -56,9 +56,9 @@ export function CompatibilityScore({
 
         <div className="flex flex-col items-center gap-2">
           {joinerAvatar ? (
-            <img src={joinerAvatar} alt={joinerName} className="w-16 h-16 rounded-full border-2 border-pink-500/50" />
+            <img src={joinerAvatar} alt={joinerName} className="w-16 h-16 rounded-full border-2 border-[#fc3c8a]/50" />
           ) : (
-            <div className="w-16 h-16 rounded-full bg-pink-500/30 flex items-center justify-center font-bold text-xl">
+            <div className="w-16 h-16 rounded-full bg-[#fc3c8a]/30 flex items-center justify-center font-bold text-xl">
               {joinerName?.charAt(0)}
             </div>
           )}
@@ -88,9 +88,9 @@ export function CompatibilityScore({
           />
           <defs>
             <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#a855f7" />
-              <stop offset="50%" stopColor="#ec4899" />
-              <stop offset="100%" stopColor="#f97316" />
+              <stop offset="0%" stopColor="#1DB954" />
+              <stop offset="50%" stopColor="#1ed760" />
+              <stop offset="100%" stopColor="#8de84e" />
             </linearGradient>
           </defs>
         </svg>

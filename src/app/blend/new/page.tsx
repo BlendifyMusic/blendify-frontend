@@ -67,7 +67,7 @@ function BlendNewContent() {
   if (authLoading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full border-4 border-purple-500/30 border-t-purple-500 animate-spin" />
+        <div className="w-12 h-12 rounded-full border-4 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
       </main>
     );
   }
@@ -75,8 +75,8 @@ function BlendNewContent() {
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-green-500/15 blur-[100px] animate-pulse-glow" />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-purple-500/15 blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 rounded-full bg-[#1DB954]/10 blur-[100px] animate-pulse-glow" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-emerald-500/10 blur-[100px] animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
       </div>
 
       <motion.div
@@ -86,7 +86,7 @@ function BlendNewContent() {
         className="flex flex-col items-center text-center max-w-lg"
       >
         <motion.div variants={scaleIn} className="mb-6">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
+          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#1DB954] to-emerald-600 flex items-center justify-center">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20 6 9 17 4 12" />
             </svg>
@@ -103,10 +103,10 @@ function BlendNewContent() {
 
         <motion.div
           variants={fadeInUp}
-          className="w-full rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm"
+          className="w-full rounded-2xl bg-white/[0.03] border border-white/[0.07] p-6 backdrop-blur-sm"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="flex-1 bg-white/5 rounded-xl px-4 py-3 text-sm text-white/70 truncate font-mono">
+            <div className="flex-1 bg-white/[0.04] rounded-xl px-4 py-3 text-sm text-white/70 truncate font-mono">
               {blendUrl}
             </div>
           </div>
@@ -114,13 +114,13 @@ function BlendNewContent() {
           <div className="flex gap-3">
             <button
               onClick={handleCopy}
-              className="flex-1 py-3 rounded-xl bg-white/10 hover:bg-white/15 transition-colors font-medium text-sm"
+              className="flex-1 py-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] transition-colors font-medium text-sm"
             >
               {copied ? 'Copied!' : 'Copy Link'}
             </button>
             <button
               onClick={handleShare}
-              className="flex-1 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 transition-opacity font-medium text-sm"
+              className="flex-1 py-3 rounded-xl bg-[#1DB954] text-black hover:bg-[#1ed760] transition-colors font-medium text-sm"
             >
               Share
             </button>
@@ -151,9 +151,9 @@ function BlendNewContent() {
             >
               <div className="flex items-center gap-3">
                 {joinerAvatar ? (
-                  <img src={joinerAvatar} alt={joinerName} className="w-12 h-12 rounded-full border-2 border-pink-500/50" />
+                  <img src={joinerAvatar} alt={joinerName} className="w-12 h-12 rounded-full border-2 border-[#fc3c8a]/50" />
                 ) : (
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-xl font-bold">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#fc3c8a] to-[#1DB954] flex items-center justify-center text-xl font-bold">
                     {joinerName.charAt(0)}
                   </div>
                 )}
@@ -163,7 +163,7 @@ function BlendNewContent() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full border-2 border-purple-500/30 border-t-purple-500 animate-spin" />
+                <div className="w-6 h-6 rounded-full border-2 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
                 <p className="text-white/50 text-sm">Computing your blend...</p>
               </div>
             </motion.div>
@@ -176,7 +176,7 @@ function BlendNewContent() {
               animate={{ opacity: 1, scale: 1 }}
               className="flex flex-col items-center gap-4 mt-8"
             >
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#1DB954] to-emerald-600 flex items-center justify-center">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />
                 </svg>
@@ -195,7 +195,7 @@ export default function BlendNew() {
   return (
     <Suspense fallback={
       <main className="min-h-screen flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full border-4 border-green-500/30 border-t-green-500 animate-spin" />
+        <div className="w-12 h-12 rounded-full border-4 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
       </main>
     }>
       <BlendNewContent />

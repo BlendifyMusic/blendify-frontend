@@ -32,7 +32,7 @@ export function UniqueTastes({
       <div className="grid grid-cols-2 gap-6 w-full">
         {/* Creator's unique */}
         <div>
-          <motion.p variants={slideInLeft} className="text-sm font-medium text-purple-400 mb-4">
+          <motion.p variants={slideInLeft} className="text-sm font-medium text-[#1DB954] mb-4">
             {creatorName}
           </motion.p>
           <div className="space-y-3">
@@ -47,7 +47,7 @@ export function UniqueTastes({
                 {track.albumArt ? (
                   <img src={track.albumArt} alt="" className="w-10 h-10 rounded-lg object-cover" />
                 ) : (
-                  <div className="w-10 h-10 rounded-lg bg-purple-500/20" />
+                  <div className="w-10 h-10 rounded-lg bg-[#1DB954]/20" />
                 )}
                 <div className="text-left min-w-0">
                   <p className="text-xs font-medium truncate">{track.title}</p>
@@ -60,7 +60,7 @@ export function UniqueTastes({
 
         {/* Joiner's unique */}
         <div>
-          <motion.p variants={slideInRight} className="text-sm font-medium text-pink-400 mb-4">
+          <motion.p variants={slideInRight} className="text-sm font-medium text-[#fc3c8a] mb-4">
             {joinerName}
           </motion.p>
           <div className="space-y-3">
@@ -75,7 +75,7 @@ export function UniqueTastes({
                 {track.albumArt ? (
                   <img src={track.albumArt} alt="" className="w-10 h-10 rounded-lg object-cover" />
                 ) : (
-                  <div className="w-10 h-10 rounded-lg bg-pink-500/20" />
+                  <div className="w-10 h-10 rounded-lg bg-[#fc3c8a]/20" />
                 )}
                 <div className="text-left min-w-0">
                   <p className="text-xs font-medium truncate">{track.title}</p>

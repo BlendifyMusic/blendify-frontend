@@ -39,7 +39,7 @@ export function GenreVenn({
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5 + i * 0.08, type: 'spring' }}
-                  className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-sm"
+                  className="px-4 py-2 rounded-full bg-[#1DB954]/15 border border-[#1DB954]/30 text-sm"
                 >
                   {genre}
                 </motion.span>
@@ -59,7 +59,7 @@ export function GenreVenn({
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + i * 0.08 }}
-                  className="px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs text-white/60"
+                  className="px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-xs text-white/60"
                 >
                   {genre}
                 </motion.span>
@@ -80,7 +80,7 @@ export function GenreVenn({
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.8 + i * 0.08 }}
-                  className="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-xs text-white/60"
+                  className="px-3 py-1.5 rounded-full bg-[#fc3c8a]/10 border border-[#fc3c8a]/20 text-xs text-white/60"
                 >
                   {genre}
                 </motion.span>

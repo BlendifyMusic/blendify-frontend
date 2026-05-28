@@ -90,7 +90,7 @@ export default function TermsOfService() {
           <h2 className="text-xl font-semibold text-white mb-3">9. Contact</h2>
           <p>
             For questions about these terms, contact us at{' '}
-            <a href="mailto:support@useblendify.com" className="text-purple-400 hover:underline">
+            <a href="mailto:support@useblendify.com" className="text-[#1DB954] hover:underline">
               support@useblendify.com
             </a>
           </p>

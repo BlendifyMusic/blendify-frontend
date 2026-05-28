@@ -44,13 +44,12 @@ export function HomeHero() {
           <button
             onClick={handleCreateBlend}
             disabled={loading || creating}
-            className="group relative px-8 py-4 rounded-full font-semibold text-lg overflow-hidden transition-transform hover:scale-105 active:scale-95 disabled:opacity-50"
+            className="group flex items-center gap-2 px-9 py-4 rounded-full bg-[#1DB954] text-black font-medium text-[15px] hover:bg-[#1ed760] hover:scale-[1.04] active:scale-[0.97] transition-all disabled:opacity-50"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 animate-gradient" />
-            <div className="absolute inset-[2px] bg-[#0a0a0a] rounded-full transition-opacity group-hover:opacity-0" />
-            <span className="relative text-gradient group-hover:text-white transition-colors">
-              {creating ? 'Creating...' : 'Create Your Blend'}
-            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+            </svg>
+            {creating ? 'Creating...' : 'Create your blend'}
           </button>
         ) : (
           <PlatformPicker />
@@ -63,12 +62,12 @@ export function HomeHero() {
           animate={{ opacity: 1 }}
           className="flex items-center gap-3 mt-3"
         >
-          <span className="text-white/30 text-sm">
+          <span className="text-white/25 text-[13px]">
             Signed in as {user.displayName || 'User'}
           </span>
           <button
             onClick={() => signOut(getFirebaseAuth())}
-            className="text-white/30 text-sm underline hover:text-white/60 transition-colors"
+            className="text-white/25 text-[13px] underline hover:text-white/50 transition-colors"
           >
             Sign out
           </button>

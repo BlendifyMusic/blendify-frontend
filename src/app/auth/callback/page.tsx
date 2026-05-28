@@ -73,7 +73,7 @@ function AuthCallbackContent() {
           <p className="text-white/60 text-lg">{statusText}</p>
           <button
             onClick={() => router.push('/')}
-            className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/15 transition-colors font-medium text-sm"
+            className="px-6 py-3 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] transition-colors font-medium text-sm"
           >
             Go Home
           </button>
@@ -90,7 +90,7 @@ function AuthCallbackContent() {
           animate={{ opacity: 1, scale: 1 }}
           className="flex flex-col items-center gap-6"
         >
-          <div className="w-16 h-16 rounded-full border-4 border-purple-500/30 border-t-purple-500 animate-spin" />
+          <div className="w-16 h-16 rounded-full border-4 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
           <p className="text-white/60 text-lg">{statusText}</p>
         </motion.div>
       </main>
@@ -100,8 +100,8 @@ function AuthCallbackContent() {
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-12">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-purple-600/20 blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-pink-600/20 blur-[120px] animate-pulse-glow" />
+        <div className="absolute top-1/4 -left-32 w-96 h-96 rounded-full bg-[#1DB954]/10 blur-[120px] animate-pulse-glow" />
+        <div className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full bg-emerald-500/10 blur-[120px] animate-pulse-glow" />
       </div>
 
       <motion.div
@@ -111,7 +111,7 @@ function AuthCallbackContent() {
         className="flex flex-col items-center text-center max-w-lg w-full"
       >
         <motion.div variants={fadeInUp} className="mb-6">
-          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
+          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#1DB954] to-emerald-600 flex items-center justify-center">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20 6 9 17 4 12" />
             </svg>
@@ -131,16 +131,16 @@ function AuthCallbackContent() {
         {musicData && musicData.tracks.length > 0 && (
           <motion.div variants={fadeInUp} className="w-full mb-8">
             <h3 className="text-sm text-white/40 uppercase tracking-wider mb-3 text-left">Your Top Tracks</h3>
-            <div className="space-y-2 max-h-64 overflow-y-auto pr-2">
+            <div className="space-y-2 max-h-64 overflow-y-auto pr-2 scrollbar-none">
               {musicData.tracks.slice(0, 10).map((track, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-3 p-2 rounded-xl bg-white/5 border border-white/5"
+                  className="flex items-center gap-3 p-2 rounded-xl bg-white/[0.03] border border-white/[0.05]"
                 >
                   {track.albumArt ? (
                     <img src={track.albumArt} alt="" className="w-10 h-10 rounded-lg object-cover" />
                   ) : (
-                    <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-white/[0.06] flex items-center justify-center">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                         <path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />
                       </svg>
@@ -164,12 +164,12 @@ function AuthCallbackContent() {
               {musicData.artists.slice(0, 10).map((artist, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/5"
+                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/[0.03] border border-white/[0.05]"
                 >
                   {artist.imageUrl ? (
                     <img src={artist.imageUrl} alt="" className="w-6 h-6 rounded-full object-cover" />
                   ) : (
-                    <div className="w-6 h-6 rounded-full bg-white/10" />
+                    <div className="w-6 h-6 rounded-full bg-white/[0.06]" />
                   )}
                   <span className="text-sm">{artist.name}</span>
                 </div>
@@ -181,7 +181,7 @@ function AuthCallbackContent() {
         <motion.button
           variants={fadeInUp}
           onClick={handleContinue}
-          className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 transition-opacity font-semibold text-lg"
+          className="w-full py-4 rounded-xl bg-[#1DB954] text-black hover:bg-[#1ed760] transition-colors font-semibold text-lg"
         >
           {isJoining ? 'Join the Blend' : 'Create Your Blend'}
         </motion.button>
@@ -194,7 +194,7 @@ export default function AuthCallback() {
   return (
     <Suspense fallback={
       <main className="min-h-screen flex items-center justify-center">
-        <div className="w-16 h-16 rounded-full border-4 border-purple-500/30 border-t-purple-500 animate-spin" />
+        <div className="w-16 h-16 rounded-full border-4 border-[#1DB954]/30 border-t-[#1DB954] animate-spin" />
       </main>
     }>
       <AuthCallbackContent />

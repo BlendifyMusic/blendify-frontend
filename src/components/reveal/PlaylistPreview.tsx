@@ -39,9 +39,9 @@ export function PlaylistPreview({
     const ctx = canvas.getContext('2d')!;
 
     const gradient = ctx.createLinearGradient(0, 0, 1080, 1920);
-    gradient.addColorStop(0, '#581c87');
+    gradient.addColorStop(0, '#0d2e1a');
     gradient.addColorStop(0.5, '#0a0a0a');
-    gradient.addColorStop(1, '#831843');
+    gradient.addColorStop(1, '#0d2416');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, 1080, 1920);
 
@@ -126,10 +126,10 @@ export function PlaylistPreview({
             <span
               className={`text-[10px] px-2 py-0.5 rounded-full ${
                 track.source === 'shared'
-                  ? 'bg-purple-500/20 text-purple-300'
+                  ? 'bg-[#1DB954]/20 text-[#1ed760]'
                   : track.source === 'creator'
-                    ? 'bg-blue-500/20 text-blue-300'
-                    : 'bg-pink-500/20 text-pink-300'
+                    ? 'bg-teal-500/20 text-teal-300'
+                    : 'bg-[#fc3c8a]/20 text-[#fc3c8a]'
               }`}
             >
               {track.source === 'shared' ? 'both' : track.source === 'creator' ? 'you' : 'them'}
@@ -153,7 +153,7 @@ export function PlaylistPreview({
           <button
             onClick={handleAddToLibrary}
             disabled={pushing}
-            className="w-full py-4 rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+            className="w-full py-4 rounded-2xl bg-[#1DB954] text-black font-semibold hover:bg-[#1ed760] transition-colors disabled:opacity-50"
           >
             {pushing ? 'Adding...' : 'Add to My Library'}
           </button>
